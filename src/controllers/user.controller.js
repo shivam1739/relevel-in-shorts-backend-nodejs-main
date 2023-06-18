@@ -2,6 +2,7 @@ const User = require("../models/user.model");
 
 const createUser = async (req, res) => {
   const data = req.body;
+  const response = {};
   try {
     const userObj = {
       name: data.name,
@@ -11,7 +12,7 @@ const createUser = async (req, res) => {
       DateofBirth: data.DateofBirth,
       userName: data.userName,
     };
-    const response = await User.create(userObj);
+    response = await User.create(userObj);
     response.message = "User is registered successfully";
     res.status(201).send(response);
   } catch (err) {
